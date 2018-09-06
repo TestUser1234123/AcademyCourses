@@ -1,5 +1,14 @@
 extends includes/layout
 block main-content
-    h2 hi from Index
-    div(ng-view)
-    h3=message
+    header
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+            .container
+                .navbar-header
+                    a.navbar-brand(href='/') Navbar
+                .navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li Hello 
+    section
+        div(ng-view)
+    footer
+        p.text-center &copy; Georgi Yonchev 2018
