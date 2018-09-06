@@ -1,1 +1,6 @@
-div New courses body goes here
+div(ng-repeat="course in courses | orderBy: '-published' | limitTo: 10")
+    .row
+        .col-md-3
+            | {{ course.published | date: 'dd MMM' }}
+        .col-md-9
+            | {{ course.name }}

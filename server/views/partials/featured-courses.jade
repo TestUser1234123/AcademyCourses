@@ -1,1 +1,2 @@
-div Featured courses body goes here
+div(ng-repeat="course in courses | filter: { featured: true }")
+    | {{ course.name }}
