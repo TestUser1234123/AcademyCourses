@@ -49,26 +49,6 @@ var messageSchema = mongoose.Schema({
 });
 
 var Message = mongoose.model('Message', messageSchema);
-var messageFromDatabase;
-
-Message.deleteMany({})
-        .exec(function(error) {
-            if (error) {
-                console.log('Messages cannot be deleted: ' + error);
-            }
-
-            console.log('Messages deleted...');
-
-            Message.create({message: 'Hi from Mongoose!'}, function(error, model) {
-                if (error) {
-                    console.log('Message model cannot be created: ' + error);
-                    return;
-                }
-                messageFromDatabase = model.message;
-
-                console.log(model.message);
-            });
-        });
 
 app.get('/partials/:partialName', function(request, response) {
     response.render('partials/' + request.params.partialName);
@@ -76,7 +56,7 @@ app.get('/partials/:partialName', function(request, response) {
 });
 
 app.get('*', function(request, response) {
-    response.render('index', { title: 'Hey', message: messageFromDatabase });
+    response.render('index');
 });
 
 app.listen(3030);
