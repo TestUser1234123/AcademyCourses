@@ -9,7 +9,7 @@
     
         $routeProvider
            .when('/', {
-               templateUrl: '/partials/home',
+               templateUrl: 'partials/home',
                controller: 'MainController'
            })
     });
