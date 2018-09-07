@@ -19,9 +19,28 @@ module.exports = function(config) {
         console:log('Database error: ' + error);
     });
 
-    let messageSchema = mongoose.Schema({
-        message: String
+    let userSchema = mongoose.Schema({
+        username: String,
+        firstName: String,
+        lastName: String
+        //salt: String,
+        //hashPassword: String
     });
 
-    let Message = mongoose.model('Message', messageSchema);
+    let User = mongoose.model('User', userSchema);
+
+
+    User.find({}).exec(function(error, usersCollection) {
+        if (error) {
+            console.log('Cannot find users: ' + error);
+            return;
+        }
+
+        if (usersCollection.length === 0) {
+            User.create({ username: 'g.yonchev', firstName: 'Georgi', lastName: 'Yonchev' });
+            User.create({ username: 'user1', firstName: 'Tom', lastName: 'John' });
+            User.create({ username: 'user2', firstName: 'Jane', lastName: 'Morris' });
+            console.log('Users added to the database...');
+        }
+    })
 };
