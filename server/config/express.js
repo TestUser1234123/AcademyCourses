@@ -1,3 +1,5 @@
+'use strict';
+
 let express = require('express'),
     stylus = require('stylus'),
     bodyParser = require('body-parser'),
