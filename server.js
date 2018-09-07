@@ -1,31 +1,13 @@
 var express = require('express');
-var stylus = require('stylus');
-var bodyParser = require('body-parser');
+
 var mongoose = require('mongoose');
 
 var env = process.env.NODE_EVN || 'development';
 
 var app = express();
+var config = require('./server/config/config');
 
-app.set('view engine', 'jade');
-app.set('views', __dirname + '/server/views');
-
-app.use(bodyParser.urlencoded(
-    {
-    extended: true
-    }
-));
-
-app.use(stylus.middleware(
-    {
-        src: __dirname + '/public',
-        compile: function(str, path) {
-            return stylus(str).set('filename', path);
-        }
-    }
-));
-
-app.use(express.static(__dirname + '/public'));
+require('./server/config/express')(app, config);
 
 
 mongoose.connect("mongodb://localhost:27017/academycourses", { useNewUrlParser: true });

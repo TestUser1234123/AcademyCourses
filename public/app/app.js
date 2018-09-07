@@ -12,4 +12,3 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'MainController'
         })
 });
-
