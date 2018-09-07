@@ -1,7 +1,7 @@
-var express = require('express');
-var stylus = require('stylus');
-var bodyParser = require('body-parser');
-var path = require('path');
+let express = require('express'),
+    stylus = require('stylus'),
+    bodyParser = require('body-parser'),
+    path = require('path');
 
 module.exports = function (app, config) {
     app.set('view engine', 'jade');
