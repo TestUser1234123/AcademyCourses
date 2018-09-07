@@ -50,8 +50,8 @@ var messageSchema = mongoose.Schema({
 
 var Message = mongoose.model('Message', messageSchema);
 
-app.get('/partials/:partialName', function(request, response) {
-    response.render('partials/' + request.params.partialName);
+app.get('/partials/:partialArea/:partialName', function(request, response) {
+    response.render('partials/' + request.params.partialArea + '/' + request.params.partialName);
     response.end();
 });
 
